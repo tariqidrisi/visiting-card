@@ -1,0 +1,51 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500&family=Kdam+Thmor+Pro&family=Libre+Franklin:wght@100&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    font-family: $font-family-sans-serif !important;
+
+    /** Generic Elements CSS Start **/
+    form {
+        input {
+            height: $element-height;
+            background-color: #fff !important;
+
+        }
+
+        button {
+            background-color: $auth-button-bg-color !important;
+            color: $auth-button-color !important;
+            border: 0 !important;
+            height: $element-height;
+            font-size: 20px !important;
+            font-weight: bold !important;
+        }
+    }
+    /** Generic Elements CSS End **/
+
+    /** X Editable buttons Start **/
+
+    .editable-buttons {
+        button {
+            height: 35px;
+            width: 35px;
+
+            i {
+                font-size: 16px;
+                top: -2px
+            }
+        }
+
+        button.editable-submit {
+            background-color: green !important;
+        }
+    }
+
+    /** X Editable buttons End **/
+}
