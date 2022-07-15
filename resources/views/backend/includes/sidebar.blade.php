@@ -50,6 +50,13 @@
                     <p>Embed Video</p>
                 </a>
             </li>
+
+            <li class="@if(Route::is('image-upload') ) active @endif">
+                <a href="{{ url('/image-upload') }}">
+                    <i class="nc-icon nc-button-play"></i>
+                    <p>Upload Logo</p>
+                </a>
+            </li>
 {{--            <li class="active-pro">--}}
 {{--                <a href="{{ url('/logout') }}">--}}
 {{--                    <i class="nc-icon nc-spaceship"></i>--}}

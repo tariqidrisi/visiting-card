@@ -1,4 +1,4 @@
-@extends('layouts.theme-2.frontend')
+@extends('layouts.backend')
 
 @section('style')
     <style>
@@ -23,19 +23,18 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="content">
 
     <div class="panel panel-primary">
-        <div class="panel-heading"><h2>laravel File Uploading with Amazon S3 - ItSolutionStuff.com.com</h2></div>
         <div class="panel-body">
 
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success alert-block">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{ $message }}</strong>
-                </div>
-                <img src="{{ Session::get('image') }}">
-            @endif
+{{--            @if ($message = Session::get('success'))--}}
+{{--                <div class="alert alert-success alert-block">--}}
+{{--                    <button type="button" class="close" data-dismiss="alert">×</button>--}}
+{{--                    <strong>{{ $message }}</strong>--}}
+{{--                </div>--}}
+{{--                <img src="{{ Session::get('image') }}">--}}
+{{--            @endif--}}
 
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
@@ -50,17 +49,45 @@
 
             <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="row">
 
+                <div class="row mb-5">
+                    <div class="col-md-2">
+                        <label>Company</label>
+                    </div>
+                    <div class="col-md-10">
+                        <select name="company_id" class="form-control w-50 companies">
+                            <option></option>
+                            @foreach($companies as $company)
+                                <option value="{{ $company->id  }}" @if(isset($id) && $company->id == $id) selected @endif>{{ $company->company }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Company Logo</label>
+                    </div>
                     <div class="col-md-6">
                         <input type="file" name="image" class="form-control">
                     </div>
 
-                    <div class="col-md-6">
+
+
+                </div>
+
+                <div class="row">
+                    <img src="{{ Session::get('image') }}">
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-md-12">
                         <button type="submit" class="btn btn-success">Upload</button>
                     </div>
 
                 </div>
+
             </form>
 
         </div>
