@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,10 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('embed-video/{id}', 'App\Http\Controllers\DashboardController@ajaxEmbedVideo')->name("ajax-embed-video");
     Route::post('save-embed-video', 'App\Http\Controllers\DashboardController@saveVideo')->name("save-embed-video");
 
+
+    // AWS image routes
+    Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
+    Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
 
 });
 
