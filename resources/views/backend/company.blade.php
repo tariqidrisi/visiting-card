@@ -15,6 +15,7 @@
             <thead>
             <tr>
                 <th>Company</th>
+                <th>Theme</th>
                 <th>Description</th>
                 <th>Action</th>
             </tr>
@@ -27,6 +28,13 @@
                                data-pk="{{$row->id}}"
                                data-name="company">
                                 {{$row->company}}</a>
+                        </td>
+
+                        <td>
+                            <a href="#" class="xedit"
+                               data-pk="{{$row->id}}"
+                               data-name="theme">
+                                {{$row->theme}}</a>
                         </td>
 
                         <td>
@@ -46,6 +54,7 @@
             <tfoot>
             <tr>
                 <th>Company</th>
+                <th>Theme</th>
                 <th>Description</th>
                 <th>Action</th>
             </tr>

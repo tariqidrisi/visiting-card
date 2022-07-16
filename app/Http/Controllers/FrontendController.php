@@ -23,9 +23,15 @@ class FrontendController extends Controller
         $data['social_media'] = SocialMedia::where('company_id', $company_id)->get()->toArray();;
         $data['video'] = CompanyVideo::where('company_id', $company_id)->get()->toArray();;
 
-//        dd($data['company']);
+//        dd($data['company'][0]['theme']);
 
-        return view('frontend/theme-1/profile',compact(
+        if ($data['company'][0]['theme'] == '1') {
+            $theme = 'theme-1';
+        } else {
+            $theme = 'theme-2';
+        }
+
+        return view('frontend/'.$theme.'/profile',compact(
             'data'
         ));
     }

@@ -47,6 +47,7 @@ class DashboardController extends Controller
         $array = [
             '_token' => $request->input('_token'),
             'company' => trim(preg_replace('/\s+/', '-', strtolower($request->input('company')))),
+            'theme' => $request->input('theme'),
             'desc' => trim($request->input('desc')),
 
         ];
@@ -101,6 +102,7 @@ class DashboardController extends Controller
 
         if(!is_null($update)){
             $update->company = trim(preg_replace('/\s+/', '-', $request->input('company')));
+            $update->theme = trim($request->input('theme'));
             $update->desc = trim($request->input('desc'));
             $update->save();
             Alert::success('Success', 'Data updated successfully');
