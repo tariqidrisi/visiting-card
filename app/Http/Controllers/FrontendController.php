@@ -25,7 +25,7 @@ class FrontendController extends Controller
 
 //        dd($data['company']);
 
-        return view('frontend/theme-2/profile',compact(
+        return view('frontend/theme-1/profile',compact(
             'data'
         ));
     }
