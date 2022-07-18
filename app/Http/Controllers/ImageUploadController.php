@@ -34,12 +34,12 @@ class ImageUploadController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->image->extension();
+        $imageName = $request->image->hashName();
 
         $path = Storage::disk('s3')->put('images', $request->image);
         $path = Storage::disk('s3')->url($path);
 
-//        dd($path);
+//        dd($request->image->hashName());
 
         /* Store $imageName name in DATABASE from HERE */
 
@@ -49,7 +49,7 @@ class ImageUploadController extends Controller
 
             $array = [
                 'company_id' => $request->Input("company_id"),
-                'img_path' => $path,
+                'img_path' => $imageName,
             ];
 
 //            dd($array);
@@ -57,14 +57,14 @@ class ImageUploadController extends Controller
             $logo = CompanyLogo::where('company_id', $request->Input("company_id"))
                 ->update([
                     'company_id' => $request->Input("company_id"),
-                    'img_path' => $path,
+                    'img_path' => $imageName,
                 ]);
             $message = "Data updated successfully";
 
         } else {
             $logo = new CompanyLogo();
             $logo->company_id = $request->Input("company_id");
-            $logo->img_path = $path;
+            $logo->img_path = $imageName;
             $logo->save();
 
             $message = "Data saved successfully";

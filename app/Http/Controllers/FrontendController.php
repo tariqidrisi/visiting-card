@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\CompanyLogo;
 use JeroenDesloovere\VCard\VCard;
 
 use App\Models\Company;
@@ -9,6 +10,7 @@ use App\Models\CutomerInformation;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
 {
@@ -25,6 +27,22 @@ class FrontendController extends Controller
 
 //        dd($data['company'][0]['theme']);
 
+        // fetch logo from AWS bucket
+        $filename = CompanyLogo::where('company_id', $company_id)->pluck('img_path')->toArray();
+//        dd($filename[0]);
+        $key = 'images/'.$filename[0];
+        $client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
+        $bucket = env('AWS_BUCKET');
+
+        $command = $client->getCommand('GetObject', [
+            'Bucket' => $bucket,
+            'Key' => $key
+        ]);
+        $request = $client->createPresignedRequest($command, '+20 minutes');
+        $presignedUrl = (string)$request->getUri();
+
+
+        // theme selection
         if ($data['company'][0]['theme'] == '1') {
             $theme = 'theme-1';
         } else {
@@ -32,7 +50,7 @@ class FrontendController extends Controller
         }
 
         return view('frontend/'.$theme.'/profile',compact(
-            'data'
+            'data', 'presignedUrl'
         ));
     }
 

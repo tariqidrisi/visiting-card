@@ -26,7 +26,7 @@
 
     <div class="profile-card js-profile-card">
         <div class="profile-card__img">
-            <img src="{{ asset('img/dummy.png') }}" alt="profile card">
+            <img src="{{ $presignedUrl }}" alt="profile card">
         </div>
 {{--        {{ dd($data['company'][0])  }}--}}
         <div class="profile-card__cnt js-profile-cnt">
