@@ -42,8 +42,17 @@ class DashboardController extends Controller
     }
 
     public function createCompany(Request $request, Response $response) {
+//        dd($request->all());
 
-        $saved = Company::create($request->all());
+        $array = [
+            '_token' => $request->input('_token'),
+            'company' => trim(preg_replace('/\s+/', '-', strtolower($request->input('company')))),
+            'theme' => $request->input('theme'),
+            'desc' => trim($request->input('desc')),
+
+        ];
+
+        $saved = Company::create($array);
 
         if(!$saved){
             Alert::error('Error', 'Failed!');
@@ -92,7 +101,8 @@ class DashboardController extends Controller
         $update = Company::find($id);
 
         if(!is_null($update)){
-            $update->company = trim($request->input('company'));
+            $update->company = trim(preg_replace('/\s+/', '-', $request->input('company')));
+            $update->theme = trim($request->input('theme'));
             $update->desc = trim($request->input('desc'));
             $update->save();
             Alert::success('Success', 'Data updated successfully');

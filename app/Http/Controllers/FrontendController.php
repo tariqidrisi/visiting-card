@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\CompanyLogo;
 use JeroenDesloovere\VCard\VCard;
 
 use App\Models\Company;
@@ -9,6 +10,7 @@ use App\Models\CutomerInformation;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
 {
@@ -23,10 +25,32 @@ class FrontendController extends Controller
         $data['social_media'] = SocialMedia::where('company_id', $company_id)->get()->toArray();;
         $data['video'] = CompanyVideo::where('company_id', $company_id)->get()->toArray();;
 
-//        dd($data['company']);
+//        dd($data['company'][0]['theme']);
 
-        return view('frontend/theme-2/profile',compact(
-            'data'
+        // fetch logo from AWS bucket
+        $filename = CompanyLogo::where('company_id', $company_id)->pluck('img_path')->toArray();
+//        dd($filename[0]);
+        $key = 'images/'.$filename[0];
+        $client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
+        $bucket = env('AWS_BUCKET');
+
+        $command = $client->getCommand('GetObject', [
+            'Bucket' => $bucket,
+            'Key' => $key
+        ]);
+        $request = $client->createPresignedRequest($command, '+20 minutes');
+        $presignedUrl = (string)$request->getUri();
+
+
+        // theme selection
+        if ($data['company'][0]['theme'] == '1') {
+            $theme = 'theme-1';
+        } else {
+            $theme = 'theme-2';
+        }
+
+        return view('frontend/'.$theme.'/profile',compact(
+            'data', 'presignedUrl'
         ));
     }
 

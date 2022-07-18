@@ -39,7 +39,7 @@
 
             <li class="@if(Route::is('social-media') ) active @endif" id="social-media">
                 <a href="{{ url('/social-media') }}">
-                    <i class="nc-icon nc-pin-3"></i>
+                    <i class="nc-icon nc-tv-2"></i>
                     <p>Social Media</p>
                 </a>
             </li>
@@ -48,6 +48,13 @@
                 <a href="{{ url('/embed-video') }}">
                     <i class="nc-icon nc-button-play"></i>
                     <p>Embed Video</p>
+                </a>
+            </li>
+
+            <li class="@if(Route::is('image-upload') ) active @endif">
+                <a href="{{ url('/image-upload') }}">
+                    <i class="nc-icon nc-cloud-upload-94"></i>
+                    <p>Upload Logo</p>
                 </a>
             </li>
 {{--            <li class="active-pro">--}}

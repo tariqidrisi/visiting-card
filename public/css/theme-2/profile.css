@@ -1,3 +1,6 @@
+body {
+    background: linear-gradient(45deg, #ff003c, #c648c8);
+}
 .container {
     /*display: grid;*/
     /*grid-template-columns: 300px 300px 300px;*/
@@ -10,7 +13,7 @@
 
 .card {
     background-color: #222831;
-    height: 37rem;
+    height: auto;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -121,8 +124,8 @@
 .social-icons i {
     color: #fff;
     position: absolute;
-    top: 0.95em;
-    left: 0.96em;
+    top: 1em;
+    left: 1em;
     transition: all 265ms ease-out;
 }
 

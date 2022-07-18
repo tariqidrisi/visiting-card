@@ -28,6 +28,19 @@
                             </div>
 
                             <div class="row">
+                                <div class="col-md-12 pr-1">
+                                    <div class="form-group">
+                                        <label>Theme</label>
+                                        <select name="theme" class="form-control w-50">
+                                            <option value="1" @if(isset($update) && $update->theme === '1') selected @endif>Theme 1</option>
+                                            <option value="2" @if(isset($update) && $update->theme === '2') selected @endif>Theme 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
