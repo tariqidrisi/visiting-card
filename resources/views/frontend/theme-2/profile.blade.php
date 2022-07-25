@@ -42,7 +42,7 @@
             </div>
 
         </div>
-        <ul class="social-icons">
+        <ul class="social-icons text-center">
             <li><a href="{{ $data['social_media'][0]['facebook']  }}" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
             <li><a href="{{ $data['social_media'][0]['instagram']  }}" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
             <li><a href="{{ $data['social_media'][0]['whatsapp']  }}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
@@ -52,11 +52,11 @@
         </ul>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 text-center">
 {{--                <button class="btn draw-border">Save</button>--}}
                 <a href="{{ route("download-vcf", $data['company'][0]['id'] )  }}" class="p-3 btn draw-border js-message-btn downloadVcf">Save Contact</a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-center">
                 <button class="btn draw-border">Share</button>
 
             </div>
