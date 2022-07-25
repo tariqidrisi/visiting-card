@@ -24,10 +24,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes(['register' => false]);
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-//Route::get('/register', ['middleware' => 'auth', function()
-//{
-//    return redirect('/dashboard');
-//}]);
+
+// disable register feature from here
+Route::get('/register', ['middleware' => 'auth', function()
+{
+    return redirect('/dashboard');
+}]);
 
 // Backend application routes
 Route::group(['middleware' => 'auth'], function (){
