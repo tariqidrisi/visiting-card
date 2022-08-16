@@ -19,9 +19,20 @@
                             <div class="row">
                                 <div class="col-md-12 pr-1">
                                     <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" name="company" class="form-control" placeholder="Company"
+                                        <label>Company</label>
+                                        <input type="text" name="company" class="form-control" id="company" placeholder="Company"
                                                value="{{ isset($update) ? $update->company : "" }}">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 pr-1">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" name="username" class="form-control" id="username" placeholder="Username"
+                                               value="{{ isset($update) ? $update->username : "" }}">
                                     </div>
                                 </div>
 
@@ -62,3 +73,23 @@
         </div>
     </div>
 @endsection
+
+@section('js')
+
+    <script>
+        $(document).ready(function () {
+            var company = $("#company").val()
+            username(company)
+
+            $("#company").keyup(function () {
+                username(company)
+            })
+        })
+
+        function username(company) {
+            var company = $("#company").val()
+            $("#username").val(company.replace(/\s+/g, '-').toLowerCase())
+        }
+    </script>
+@endsection
+

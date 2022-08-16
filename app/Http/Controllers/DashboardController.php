@@ -101,7 +101,8 @@ class DashboardController extends Controller
         $update = Company::find($id);
 
         if(!is_null($update)){
-            $update->company = trim(preg_replace('/\s+/', '-', $request->input('company')));
+            $update->company = $request->input('company');
+            $update->username = trim(preg_replace('/\s+/', '-', $request->input('username')));
             $update->theme = trim($request->input('theme'));
             $update->desc = trim($request->input('desc'));
             $update->save();
