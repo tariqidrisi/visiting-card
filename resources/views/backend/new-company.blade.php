@@ -19,7 +19,7 @@
                             <div class="row">
                                 <div class="col-md-12 pr-1">
                                     <div class="form-group">
-                                        <label>Company</label>
+                                        <label>Username</label>
                                         <input type="text" name="company" class="form-control" placeholder="Company"
                                                value="{{ isset($update) ? $update->company : "" }}">
                                     </div>
