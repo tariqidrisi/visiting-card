@@ -14,15 +14,16 @@
         <table id="customer" class="table table-striped table-bordered mt-5" style="width:100%">
             <thead>
             <tr>
-                <th>Company</th>
+                <th>Username</th>
                 <th>Owner</th>
                 <th>Email</th>
                 <th>Address</th>
-                <th>From Day</th>
-                <th>To Day</th>
-                <th>From Time</th>
-                <th>To Time</th>
-                <th>Closed</th>
+{{--                <th>From Day</th>--}}
+{{--                <th>To Day</th>--}}
+{{--                <th>From Time</th>--}}
+{{--                <th>To Time</th>--}}
+{{--                <th>Closed</th>--}}
+                <th>Opening Hours</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -53,41 +54,47 @@
                                data-name="address">
                                 {{$row->address}}</a>
                         </td>
-                        <td>
-                            <a href="#" class="xedit"
-                               data-pk="{{$row->id}}"
-                               data-name="from_day">
-                                {{$row->from_day}}</a>
-                        </td>
-                        <td>
-                            <a href="#" class="xedit"
-                               data-pk="{{$row->id}}"
-                               data-name="to_day">
-                                {{$row->to_day}}</a>
-                        </td>
-                        <td>
-                            <a href="#" class="xedit"
-                               data-pk="{{$row->id}}"
-                               data-name="from_time">
-                                {{$row->from_time}}</a>
-                        </td>
-                        <td>
-                            <a href="#" class="xedit"
-                               data-pk="{{$row->id}}"
-                               data-name="to_time">
-                                {{$row->to_time}}</a>
-                        </td>
-                        <td>
-                            @foreach($row->closed as $closedOn)
-                                {{ $closedOn  }}
-                            @endforeach
-                        </td>
+{{--                        <td>--}}
+{{--                            <a href="#" class="xedit"--}}
+{{--                               data-pk="{{$row->id}}"--}}
+{{--                               data-name="from_day">--}}
+{{--                                {{$row->from_day}}</a>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="#" class="xedit"--}}
+{{--                               data-pk="{{$row->id}}"--}}
+{{--                               data-name="to_day">--}}
+{{--                                {{$row->to_day}}</a>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="#" class="xedit"--}}
+{{--                               data-pk="{{$row->id}}"--}}
+{{--                               data-name="from_time">--}}
+{{--                                {{$row->from_time}}</a>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            <a href="#" class="xedit"--}}
+{{--                               data-pk="{{$row->id}}"--}}
+{{--                               data-name="to_time">--}}
+{{--                                {{$row->to_time}}</a>--}}
+{{--                        </td>--}}
+{{--                        <td>--}}
+{{--                            @foreach($row->closed as $closedOn)--}}
+{{--                                {{ $closedOn  }}--}}
+{{--                            @endforeach--}}
+{{--                        </td>--}}
 {{--                        <td>--}}
 {{--                            <a href="#" class="xedit"--}}
 {{--                               data-pk="{{$row->id}}"--}}
 {{--                               data-name="closed">--}}
 {{--                                {{$row->closed}}</a>--}}
 {{--                        </td>--}}
+                        <td>
+                            <a href="#" class="xedit"
+                               data-pk="{{$row->id}}"
+                               data-name="opening_hours">
+                                {{$row->opening_hours}}</a>
+                        </td>
                         <td>
                             <a href="{{ url("/customer-information/$row->id") }}" class="cursor-pointer mr-4"><span class="glyphicon glyphicon-pencil"></span></a>
                             <a class="delete-confirm" onclick="deleteRecord({{ $row->id  }})" href="#"
@@ -102,11 +109,12 @@
                 <th>Owner</th>
                 <th>Email</th>
                 <th>Address</th>
-                <th>From Day</th>
-                <th>To Day</th>
-                <th>From Time</th>
-                <th>To Time</th>
-                <th>Closed</th>
+{{--                <th>From Day</th>--}}
+{{--                <th>To Day</th>--}}
+{{--                <th>From Time</th>--}}
+{{--                <th>To Time</th>--}}
+{{--                <th>Closed</th>--}}
+                <th>Opening Hours</th>
                 <th>Action</th>
             </tr>
             </tfoot>

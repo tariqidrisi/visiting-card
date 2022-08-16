@@ -128,6 +128,7 @@ class DashboardController extends Controller
             $update->email = trim($request->input('email'));
             $update->contact = trim($request->input('contact'));
             $update->address = trim($request->input('address'));
+            $update->opening_hours = trim($request->input('opening_hours'));
             $update->from_day = trim($request->input('from_day'));
             $update->to_day = trim($request->input('to_day'));
             $update->from_time = trim($request->input('from_time'));

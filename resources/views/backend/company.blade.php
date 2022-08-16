@@ -14,7 +14,7 @@
         <table id="company" class="table table-striped table-bordered mt-5" style="width:100%">
             <thead>
             <tr>
-                <th>Company</th>
+                <th>Username</th>
                 <th>Theme</th>
                 <th>Description</th>
                 <th>Action</th>
