@@ -18,7 +18,7 @@ class FrontendController extends Controller
 
         $data = [];
 
-        $data['company'] = Company::where('company', $profile)->get()->toArray();
+        $data['company'] = Company::where('username', $profile)->get()->toArray();
         $company_id = $data['company'][0]['id'];
 
         $data['info'] = CutomerInformation::where('company_id', $company_id)->get()->toArray();

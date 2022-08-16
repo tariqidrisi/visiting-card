@@ -32,6 +32,14 @@
             color: #000;
             padding-left: 10px;
         }
+        .float-left {
+            float: left;
+        }
+        .txt--user {
+            position: absolute;
+            left: 38%;
+            top: 20%;
+        }
     </style>
 @endsection
 
@@ -136,8 +144,8 @@
                 </li>
                 @endif
                 @if($data['company'][0]['company'])
-                <li class="row p-4 mx-4 my-5 other-links shadow" id="show-video">
-                    <a href="javascript:void(0)">Welcome to {{ $data['company'][0]['company']  }}</a>
+                <li class="row p-3 mx-4 my-5 other-links shadow" id="show-video">
+                    <a href="javascript:void(0)"> <span class="float-left"><img src="{{ $presignedUrl }}" alt="profile card"></span> <span class="txt--user">Welcome to {{ $data['company'][0]['username']  }}</span></a>
                 </li>
                 @endif
                 <li class="row mx-4 pt-4 pb-2 my-5 other-links shadow position-relative d-none" id="customer--info">
