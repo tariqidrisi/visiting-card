@@ -35,13 +35,7 @@ a, a:hover {
 .wrapper .main-panel {
     min-width: 800px;
 }
-@media screen and (max-width: 768px) {
-    .wrapper {
-        height: auto;
-        min-height: 100vh;
-        padding-top: 100px;
-    }
-}
+
 .profile-card {
     width: 100%;
     margin: auto;
@@ -445,5 +439,30 @@ section{
 #show-video img {
     width: 50px;
     border-radius: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 100px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .wrapper {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 100px;
+    }
+    .wrapper .main-panel {
+        min-width: 100%;
+    }
+    .other-links {
+        margin: 20px 0 !important;
+    }
+    .txt--user {
+        left: 28% !important;
+        top: 25% !important;
+    }
 }
 
