@@ -44,20 +44,30 @@ class DashboardController extends Controller
     public function createCompany(Request $request, Response $response) {
 //        dd($request->all());
 
-        $array = [
-            '_token' => $request->input('_token'),
-            'company' => trim(preg_replace('/\s+/', '-', strtolower($request->input('company')))),
-            'theme' => $request->input('theme'),
-            'desc' => trim($request->input('desc')),
+        $username = trim(preg_replace('/\s+/', '-', strtolower($request->input('username'))));
+//        dd($username);
 
-        ];
+        $checkExist = Company::where('username', '=', $username)->first();
 
-        $saved = Company::create($array);
+        if ($checkExist === null) {
+            $array = [
+                '_token' => $request->input('_token'),
+                'company' =>$request->input('company'),
+                'username' => $username,
+                'theme' => $request->input('theme'),
+                'desc' => trim($request->input('desc')),
 
-        if(!$saved){
-            Alert::error('Error', 'Failed!');
+            ];
+
+            $saved = Company::create($array);
+
+            if(!$saved){
+                Alert::error('Error', 'Failed!');
+            } else {
+                Alert::success('Success', 'Data saved successfully');
+            }
         } else {
-            Alert::success('Success', 'Data saved successfully');
+            Alert::error('Error', 'Already Exist');
         }
 
         return back()->withInput();
@@ -101,13 +111,23 @@ class DashboardController extends Controller
         $update = Company::find($id);
 
         if(!is_null($update)){
-            $update->company = $request->input('company');
-            $update->username = trim(preg_replace('/\s+/', '-', $request->input('username')));
-            $update->theme = trim($request->input('theme'));
-            $update->desc = trim($request->input('desc'));
-            $update->save();
-            Alert::success('Success', 'Data updated successfully');
-        }else{
+
+            $username = trim(preg_replace('/\s+/', '-', strtolower($request->input('username'))));
+
+            $checkExist = Company::where('username', '=', $username)->first();
+
+            if ($checkExist === null) {
+                $update->company = $request->input('company');
+                $update->username = trim(preg_replace('/\s+/', '-', $request->input('username')));
+                $update->theme = trim($request->input('theme'));
+                $update->desc = trim($request->input('desc'));
+                $update->save();
+                Alert::success('Success', 'Data updated successfully');
+            } else {
+                Alert::error('Error', 'Already Exist');
+            }
+
+        } else{
             Alert::error('Error', 'Failed!');
         }
 

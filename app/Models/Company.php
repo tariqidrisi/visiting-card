@@ -12,7 +12,7 @@ class Company extends Model
 
     public $timestamps = false;
     protected $table = 'companies';
-    protected $fillable = ['company', 'desc', 'theme'];
+    protected $fillable = ['company', 'username', 'desc', 'theme'];
     protected $dates = ['deleted_at'];
 
     public function info()
