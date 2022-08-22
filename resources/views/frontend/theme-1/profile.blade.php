@@ -125,7 +125,7 @@
                 </a>
                 @endif
                 @if($data['social_media'][0]['cash'])
-                    <a href="#" class="profile-card-social__item behance" target="_blank">
+                    <a href="{{ $data['social_media'][0]['cash']  }}" class="profile-card-social__item behance" target="_blank">
                         <span class="icon-font">
                               <i class="fa-dollar"></i>
                         </span>
