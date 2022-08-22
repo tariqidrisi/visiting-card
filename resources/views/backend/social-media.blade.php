@@ -72,6 +72,8 @@
                                         <option value="email" @if($key == 'email') selected @endif>Email</option>
                                         <option value="portfolio" @if($key == 'portfolio') selected @endif>Portfolio</option>
                                         <option value="pricing" @if($key == 'pricing') selected @endif>Pricing</option>
+                                        <option value="our-product" @if($key == 'our-product') selected @endif>Our Product</option>
+                                        <option value="cash" @if($key == 'cash') selected @endif>Cash</option>
                                     </select>
                                 </td>
                                 <td data-name="name">
@@ -103,6 +105,8 @@
                                         <option value="email">Email</option>
                                         <option value="portfolio">Portfolio</option>
                                         <option value="pricing">Pricing</option>
+                                        <option value="our_product">Our Product</option>
+                                        <option value="cash">Cash</option>
                                     </select>
                                 </td>
                                 <td data-name="name">

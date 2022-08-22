@@ -124,6 +124,14 @@
                     </span>
                 </a>
                 @endif
+                @if($data['social_media'][0]['cash'])
+                    <a href="{{ $data['social_media'][0]['cash']  }}" class="profile-card-social__item behance" target="_blank">
+                        <span class="icon-font">
+                              <i class="fa-dollar"></i>
+                        </span>
+                    </a>
+                @endif
+
                 @if($data['social_media'][0]['email'])
                 <a href="mailto:{{ $data['social_media'][0]['email']  }}" class="profile-card-social__item github" target="_blank">
                     <span class="icon-font">
@@ -184,6 +192,12 @@
                         <a href="{{ $data['social_media'][0]['website']  }}" target="_blank">Website</a>
                     </li>
                 @endif
+                @if($data['social_media'][0]['our_product'])
+                    <li class="row p-4 mx-4 my-5 other-links shadow">
+                        <a href="{{ $data['social_media'][0]['our_product']  }}" target="_blank">Our Product</a>
+                    </li>
+                @endif
+
                 @if($data['social_media'][0]['portfolio'])
                 <li class="row p-4 mx-4 my-5 other-links shadow">
                     <a href="{{ $data['social_media'][0]['portfolio']  }}" target="_blank">Our Portfolio</a>

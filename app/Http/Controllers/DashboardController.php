@@ -257,6 +257,8 @@ class DashboardController extends Controller
                 "email" => $result[0]['email'],
                 "portfolio" => $result[0]['portfolio'],
                 "pricing" => $result[0]['pricing'],
+                "our_product" => $result[0]['our_product'],
+                "cash" => $result[0]['cash'],
             ];
 
             foreach ($array as $key => $value) {
@@ -296,6 +298,8 @@ class DashboardController extends Controller
                 'email' => $request->Input("email"),
                 'portfolio' => $request->Input("portfolio"),
                 'pricing' => $request->Input("pricing"),
+                'our_product' => $request->Input("our_product"),
+                'cash' => $request->Input("cash"),
             ];
 
 //            dd($array);
@@ -313,6 +317,8 @@ class DashboardController extends Controller
                     'email' => $request->Input("email"),
                     'portfolio' => $request->Input("portfolio"),
                     'pricing' => $request->Input("pricing"),
+                    'our_product' => $request->Input("our_product"),
+                    'cash' => $request->Input("cash"),
                 ]);
             $message = "Data updated successfully";
 
@@ -329,6 +335,8 @@ class DashboardController extends Controller
             $social->email = $request->Input("email");
             $social->portfolio = $request->Input("portfolio");
             $social->pricing = $request->Input("pricing");
+            $social->our_product = $request->Input("our_product");
+            $social->cash = $request->Input("cash");
             $social->save();
 
             $message = "Data saved successfully";
