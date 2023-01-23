@@ -38,7 +38,7 @@
         .txt--user {
             position: absolute;
             left: 38%;
-            top: 20%;
+            top: 25%;
         }
     </style>
 @endsection
@@ -51,7 +51,7 @@
         </div>
 {{--        {{ dd($data['company'][0])  }}--}}
         <div class="profile-card__cnt js-profile-cnt">
-            <div class="profile-card__name">{{ @$data['company'][0]['company']  }}</div>
+            <div class="profile-card__name">{{ '@'  }}{{ $data['company'][0]['username']  }}</div>
             <div class="profile-card__txt">{{ $data['company'][0]['desc']  }}</div>
 {{--            <div class="profile-card-loc">--}}
 {{--                 <span class="profile-card-loc__icon">--}}
@@ -89,61 +89,55 @@
 {{--            </div>--}}
             <div class="profile-card-social">
                 @if($data['social_media'][0]['facebook'])
-                <a href="{{ $data['social_media'][0]['facebook']  }}" class="profile-card-social__item facebook" target="_blank">
-                    <span class="icon-font">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </span>
+{{--                <a href="{{ $data['social_media'][0]['facebook']  }}" class="profile-card-social__item facebook" target="_blank">--}}
+                <a href="{{ $data['social_media'][0]['facebook']  }}" class="" target="_blank">
+{{--                    <i class="fa-brands fa-facebook-f"></i>--}}
+                    @include('frontend.svg.facebook')
                 </a>
                 @endif
                 @if($data['social_media'][0]['instagram'])
-                <a href="{{ $data['social_media'][0]['instagram']  }}" class="profile-card-social__item instagram" target="_blank">
-                    <span class="icon-font">
-                        <i class="fa-brands fa-instagram"></i>
-                    </span>
+{{--                <a href="{{ $data['social_media'][0]['instagram']  }}" class="profile-card-social__item instagram" target="_blank">--}}
+                <a href="{{ $data['social_media'][0]['instagram']  }}" class="" target="_blank">
+                    @include('frontend.svg.instagram')
                 </a>
                 @endif
 
                 @if($data['social_media'][0]['whatsapp'])
-                <a href="{{ $data['social_media'][0]['whatsapp']  }}" class="profile-card-social__item whatsapp" target="_blank">
-                    <span class="icon-font">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </span>
+{{--                <a href="{{ $data['social_media'][0]['whatsapp']  }}" class="profile-card-social__item whatsapp" target="_blank">--}}
+                <a href="{{ $data['social_media'][0]['whatsapp']  }}" class="" target="_blank">
+                    @include('frontend.svg.whatsapp')
                 </a>
                 @endif
                 @if($data['social_media'][0]['twitter'])
-                <a href="{{ $data['social_media'][0]['twitter']  }}" class="profile-card-social__item twitter" target="_blank">
-                    <span class="icon-font">
-                        <i class="fa-brands fa-twitter"></i>
-                    </span>
+{{--                <a href="{{ $data['social_media'][0]['twitter']  }}" class="profile-card-social__item twitter" target="_blank">--}}
+                <a href="{{ $data['social_media'][0]['twitter']  }}" class="" target="_blank">
+                    @include('frontend.svg.twitter')
                 </a>
                 @endif
                 @if($data['social_media'][0]['linkedin'])
-                <a href="{{ $data['social_media'][0]['linkedin']  }}" class="profile-card-social__item behance" target="_blank">
-                    <span class="icon-font">
-                          <i class="fa-brands fa-linkedin"></i>
-                    </span>
+{{--                <a href="{{ $data['social_media'][0]['linkedin']  }}" class="profile-card-social__item behance" target="_blank">--}}
+                <a href="{{ $data['social_media'][0]['linkedin']  }}" class="" target="_blank">
+                    @include('frontend.svg.linkedin')
                 </a>
                 @endif
                 @if($data['social_media'][0]['cash'])
-                    <a href="{{ $data['social_media'][0]['cash']  }}" class="profile-card-social__item behance" target="_blank">
-                        <span class="icon-font">
-                              <i class="fa-dollar"></i>
-                        </span>
+{{--                    <a href="{{ $data['social_media'][0]['cash']  }}" class="profile-card-social__item behance" target="_blank">--}}
+                    <a href="{{ $data['social_media'][0]['cash']  }}" class="" target="_blank">
+                        @include('frontend.svg.cash')
                     </a>
                 @endif
 
                 @if($data['social_media'][0]['email'])
-                <a href="mailto:{{ $data['social_media'][0]['email']  }}" class="profile-card-social__item github" target="_blank">
-                    <span class="icon-font">
-                        <i class="fa fa-envelope"></i>
-                    </span>
+{{--                <a href="mailto:{{ $data['social_media'][0]['email']  }}" class="profile-card-social__item github" target="_blank">--}}
+                <a href="mailto:{{ $data['social_media'][0]['email']  }}" class="" target="_blank">
+                    @include('frontend.svg.email')
                 </a>
                 @endif
             </div>
 
 
 
-            <ul class="list-inline">
+            <ul class="list-inline mx-5">
                 @if($data['video'][0]['video_link'])
                 <li class="row mx-4 my-5 other-links shadow position-relative d-none" id="youtube--video">
                     <iframe width="100%" height="300" class="p-0" id="video-preview" src="{{ $data['video'][0]['video_link']  }}">
@@ -152,8 +146,10 @@
                 </li>
                 @endif
                 @if($data['company'][0]['company'])
-                <li class="row p-3 mx-4 my-5 other-links shadow" id="show-video">
-                    <a href="javascript:void(0)"> <span class="float-left"><img src="{{ $presignedUrl }}" alt="profile card"></span> <span class="txt--user">Welcome to {{ $data['company'][0]['username']  }}</span></a>
+                <li class="row p-1 mx-4 my-5 other-links shadow" id="show-video">
+                    <a href="javascript:void(0)" class="has-content">
+                        <span class="float-left"><img src="{{ $presignedUrl }}" alt="profile card"></span> <span class="txt--user">Welcome to {{ $data['company'][0]['username']  }}</span>
+                    </a>
                 </li>
                 @endif
                 <li class="row mx-4 pt-4 pb-2 my-5 other-links shadow position-relative d-none" id="customer--info">
@@ -184,34 +180,34 @@
                     </div>
                     <i class="fas fa-times-circle close-info position-absolute"></i>
                 </li>
-                <li class="row p-4 mx-4 p-3 my-5 other-links shadow" id="contact-info">
+                <li class="row p-3 mx-4 my-5 other-links shadow" id="contact-info">
                     <a href="javascript:void(0)">Our Contact Information</a>
                 </li>
                 @if($data['social_media'][0]['website'])
-                    <li class="row p-4 mx-4 my-5 other-links shadow">
+                    <li class="row p-3 mx-4 my-5 other-links shadow">
                         <a href="{{ $data['social_media'][0]['website']  }}" target="_blank">Website</a>
                     </li>
                 @endif
                 @if($data['social_media'][0]['our_product'])
-                    <li class="row p-4 mx-4 my-5 other-links shadow">
+                    <li class="row p-3 mx-4 my-5 other-links shadow">
                         <a href="{{ $data['social_media'][0]['our_product']  }}" target="_blank">Our Product</a>
                     </li>
                 @endif
 
                 @if($data['social_media'][0]['portfolio'])
-                <li class="row p-4 mx-4 my-5 other-links shadow">
+                <li class="row p-3 mx-4 my-5 other-links shadow">
                     <a href="{{ $data['social_media'][0]['portfolio']  }}" target="_blank">Our Portfolio</a>
                 </li>
                 @endif
 
                 @if($data['social_media'][0]['youtube'])
-                <li class="row p-4 mx-4 my-5 other-links shadow">
+                <li class="row p-3 mx-4 my-5 other-links shadow">
                     <a href="{{ $data['social_media'][0]['youtube']  }}" target="_blank">Youtube Channel</a>
                 </li>
                 @endif
 
                 @if($data['social_media'][0]['pricing'])
-                <li class="row p-4 mx-4 my-5 other-links shadow">
+                <li class="row p-3 mx-4 my-5 other-links shadow">
                     <a href="{{ $data['social_media'][0]['pricing']  }}" target="_blank">Pricing</a>
                 </li>
                 @endif
