@@ -69,6 +69,9 @@ a, a:hover {
     z-index: 4;
     /*box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5);*/
 }
+.fa-times-circle:before {
+    color: #000000;
+}
 @media screen and (max-width: 576px) {
     .profile-card__img {
         width: 120px;
@@ -419,8 +422,13 @@ section{
 .other-links {
     border: 1px solid #fff;
     border-radius: 550px;
-    height: 55px;
+    /*height: 55px;*/
+    position: relative;
 
+}
+
+.other-links:hover {
+    background-color: #FFFFFF;
 }
 
 .other-links a {
@@ -429,9 +437,28 @@ section{
     padding: 0;
 }
 
-.other-links a.has-content::after {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+.other-links:hover a {
+    color: #000 !important;
+}
+
+li.has-content::after {
+    position: absolute;
+    top: 18px;
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-right: 0.2em solid #ffffff;
+    border-top: 0.2em solid #ffffff;
+    transform: rotate(135deg);
+    margin-right: 0.5em;
+    margin-left: 1em;
+    right: 17px;
+}
+
+li.has-content:hover::after {
+    border-right: 0.2em solid #000000;
+    border-top: 0.2em solid #000000;
 }
 
 #customer--info {
@@ -446,7 +473,7 @@ section{
 .downloadVcf {
     color: #000000 !important;
     width: 100%;
-    padding: 10px 115px;
+    padding: 10px 115px !important;
     border: 1px solid;
     border-radius: 5px;
 }
@@ -474,9 +501,21 @@ section{
     .other-links {
         margin: 20px 0 !important;
     }
+    #youtube--video, #customer--info {
+        margin: 50px 0 !important;
+    }
     .txt--user {
         left: 28% !important;
         top: 25% !important;
+    }
+    .remove-mobile-margin {
+        margin: 0 !important;
+    }
+    .downloadVcf {
+        padding: 12px 50px !important;
+    }
+    #customer--info .container {
+        padding: 0 35px;
     }
 }
 

@@ -137,25 +137,25 @@
 
 
 
-            <ul class="list-inline mx-5">
+            <ul class="list-inline mx-5 remove-mobile-margin">
                 @if($data['video'][0]['video_link'])
-                <li class="row mx-4 my-5 other-links shadow position-relative d-none" id="youtube--video">
+                <li class="row mx-4 my-5 other-links shadow position-relative hidden d-none" id="youtube--video">
                     <iframe width="100%" height="300" class="p-0" id="video-preview" src="{{ $data['video'][0]['video_link']  }}">
                     </iframe>
                     <i class="fas fa-times-circle close-video position-absolute"></i>
                 </li>
                 @endif
                 @if($data['company'][0]['company'])
-                <li class="row p-1 mx-4 my-5 other-links shadow" id="show-video">
-                    <a href="javascript:void(0)" class="has-content">
+                <li class="row p-1 mx-4 my-5 other-links shadow has-content" id="show-video">
+                    <a href="javascript:void(0)" class="">
                         <span class="float-left"><img src="{{ $presignedUrl }}" alt="profile card"></span> <span class="txt--user">Welcome to {{ $data['company'][0]['username']  }}</span>
                     </a>
                 </li>
                 @endif
-                <li class="row mx-4 pt-4 pb-2 my-5 other-links shadow position-relative d-none" id="customer--info">
+                <li class="row mx-4 pt-4 pb-2 my-5 other-links shadow position-relative hidden d-none" id="customer--info">
                     <div class="container">
-                        <h5 class="text-center">Our Contact Information</h5>
-                        <h6 class="text-center">{{$data['info'][0]['owner']}}</h6>
+                        <h5 class="text-center pb-3 border-bottom">Our Contact Information</h5>
+                        <h6 class="text-center pt-3"><b>{{$data['info'][0]['owner']}}</b></h6>
                         <p>{{$data['company'][0]['company']}}</p>
                         <p class="text-left email-content"><span class="at-sign">@</span>
                             <a href="mailto:{{ $data['info'][0]['email']  }}" class="email" style="text-decoration: underline;" target="_blank">
@@ -180,7 +180,7 @@
                     </div>
                     <i class="fas fa-times-circle close-info position-absolute"></i>
                 </li>
-                <li class="row p-3 mx-4 my-5 other-links shadow" id="contact-info">
+                <li class="row p-3 mx-4 my-5 other-links shadow has-content" id="contact-info">
                     <a href="javascript:void(0)">Our Contact Information</a>
                 </li>
                 @if($data['social_media'][0]['website'])
@@ -225,12 +225,12 @@
         $(document).ready(function () {
 
             $("#show-video").click(function () {
-                $("#show-video").addClass('d-none');
+                $(this).addClass('d-none');
                 $("#youtube--video").removeClass('d-none');
             })
 
             $("#contact-info").click(function () {
-                $("#contact-info").addClass('d-none');
+                $(this).addClass('d-none');
                 $("#customer--info").removeClass('d-none');
             })
 
