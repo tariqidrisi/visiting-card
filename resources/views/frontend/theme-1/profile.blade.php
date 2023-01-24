@@ -157,24 +157,24 @@
                         <h5 class="text-center pb-3 border-bottom">Our Contact Information</h5>
                         <h6 class="text-center pt-3"><b>{{$data['info'][0]['owner']}}</b></h6>
                         <p>{{$data['company'][0]['company']}}</p>
-                        <p class="text-left email-content"><span class="at-sign">@</span>
+                        <p class="text-left email-content mobile--boxx"><span class="at-sign">@</span>
                             <a href="mailto:{{ $data['info'][0]['email']  }}" class="email" style="text-decoration: underline;" target="_blank">
                                 {{ $data['info'][0]['email']  }}
                             </a>
                         </p>
-                        <p class="text-left">
+                        <p class="text-left mobile--boxx">
                             <span class="at-sign"><i class="fas fa-phone"></i></span>
                             <a href="javascript:void(0)" class="email">{{$data['info'][0]['contact']}}</a>
                         </p>
-                        <p class="text-left">
+                        <p class="text-left mobile--boxx">
                             <span class="at-sign"><i class="fas fa-clock"></i></span>
                             <a href="javascript:void(0)" class="email">{{$data['info'][0]['opening_hours']}}</a>
                         </p>
-                        <p class="text-left">
+                        <p class="text-left mobile--boxx">
                             <span class="at-sign"><i class="fas fa-location"></i></span>
                             <a href="javascript:void(0)" class="email">{{$data['info'][0]['address']}}</a>
                         </p>
-                        <p style="margin: 40px 0">
+                        <p style="margin: 40px 0" class="">
                             <a href="{{ route("download-vcf", $data['company'][0]['id'] )  }}" class="downloadVcf">Save Contact</a>
                         </p>
                     </div>

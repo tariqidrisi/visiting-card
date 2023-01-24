@@ -505,7 +505,7 @@ li.has-content:hover::after {
         margin: 50px 0 !important;
     }
     .txt--user {
-        left: 28% !important;
+        left: 25% !important;
         top: 25% !important;
     }
     .remove-mobile-margin {
@@ -516,6 +516,20 @@ li.has-content:hover::after {
     }
     #customer--info .container {
         padding: 0 35px;
+    }
+
+    .mobile--boxx {
+        display: flex;
+    }
+
+    .mobile--boxx span {
+        display: inline-block;
+        float: left;
+    }
+
+    .mobile--boxx a {
+        display: inline-block;
+        float: right;
     }
 }
 
