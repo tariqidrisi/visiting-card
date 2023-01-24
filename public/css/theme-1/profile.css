@@ -531,5 +531,8 @@ li.has-content:hover::after {
         display: inline-block;
         float: right;
     }
+    .profile-card__cnt {
+        padding: 0;
+    }
 }
 
