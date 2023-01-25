@@ -227,6 +227,7 @@
             $("#show-video").click(function () {
                 $(this).addClass('d-none');
                 $("#youtube--video").removeClass('d-none');
+                $("#youtube--video").addClass('fade-in');
             })
 
             $("#contact-info").click(function () {
