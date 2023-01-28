@@ -35,9 +35,13 @@ class ImageUploadController extends Controller
         ]);
 
         $imageName = $request->image->hashName();
+        $qrName = $request->qr_code->hashName();
 
         $path = Storage::disk('s3')->put('images', $request->image);
         $path = Storage::disk('s3')->url($path);
+
+        $qrPath = Storage::disk('s3')->put('qr-codes', $request->qr_code);
+        $qrPath = Storage::disk('s3')->url($qrPath);
 
 //        dd($request->image->hashName());
 
@@ -50,14 +54,16 @@ class ImageUploadController extends Controller
             $array = [
                 'company_id' => $request->Input("company_id"),
                 'img_path' => $imageName,
+                'qr_path' => $qrName,
             ];
 
-//            dd($array);
+//            dd($array['type']);
 
             $logo = CompanyLogo::where('company_id', $request->Input("company_id"))
                 ->update([
-                    'company_id' => $request->Input("company_id"),
+                    'company_id' => $array['company_id'],
                     'img_path' => $imageName,
+                    'qr_path' => $qrName,
                 ]);
             $message = "Data updated successfully";
 
@@ -65,6 +71,7 @@ class ImageUploadController extends Controller
             $logo = new CompanyLogo();
             $logo->company_id = $request->Input("company_id");
             $logo->img_path = $imageName;
+            $logo->qr_path = $qrName;
             $logo->save();
 
             $message = "Data saved successfully";

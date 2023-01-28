@@ -28,19 +28,18 @@ class FrontendController extends Controller
 //        dd($data['company'][0]['theme']);
 
         // fetch logo from AWS bucket
-        $filename = CompanyLogo::where('company_id', $company_id)->pluck('img_path')->toArray();
-//        dd($filename[0]);
-        $key = 'images/'.$filename[0];
-        $client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
-        $bucket = env('AWS_BUCKET');
-
-        $command = $client->getCommand('GetObject', [
-            'Bucket' => $bucket,
-            'Key' => $key
-        ]);
-        $request = $client->createPresignedRequest($command, '+20 minutes');
-        $presignedUrl = (string)$request->getUri();
-
+        $filename = CompanyLogo::where('company_id', $company_id)->select('img_path', 'qr_path')->get();
+//        dd($filename[0]['qr_path']);
+        if ($filename[0]['img_path']) {
+            $presignedUrl = $this->fetchAWSImage('images/'.$filename[0]['img_path']);
+        } else {
+            $presignedUrl = '';
+        }
+        if ($filename[0]['qr_path']) {
+            $qrUrl = $this->fetchAWSImage('qr-codes/'.$filename[0]['qr_path']);
+        } else {
+            $qrUrl = "";
+        }
 
         // theme selection
         if ($data['company'][0]['theme'] == '1') {
@@ -50,8 +49,20 @@ class FrontendController extends Controller
         }
 
         return view('frontend/'.$theme.'/profile',compact(
-            'data', 'presignedUrl'
+            'data', 'presignedUrl', 'qrUrl'
         ));
+    }
+
+    public function fetchAWSImage($key) {
+        $client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
+        $bucket = env('AWS_BUCKET');
+
+        $command = $client->getCommand('GetObject', [
+            'Bucket' => $bucket,
+            'Key' => $key
+        ]);
+        $request = $client->createPresignedRequest($command, '+20 minutes');
+        return (string)$request->getUri();
     }
 
     public function downloadVcf(Request $request, Response $response, $id) {

@@ -72,6 +72,16 @@
                         <input type="file" name="image" class="form-control">
                     </div>
 
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>QR Code Image</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="file" name="qr_code" class="form-control">
+                    </div>
+
 
 
                 </div>

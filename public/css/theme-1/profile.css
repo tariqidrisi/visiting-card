@@ -98,10 +98,20 @@ a, a:hover {
     color: #fff;
     margin-bottom: 5px;
 }
+.profile-card__name-black {
+    color: #000;
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
 .profile-card__txt {
     font-size: 15px;
     font-weight: 300;
     color: #fff;
+    margin-bottom: 0;
+}
+.profile-card__txt {
+    color: #000;
     margin-bottom: 0;
 }
 .profile-card__txt strong {
@@ -481,40 +491,26 @@ li.has-content:hover::after {
     width: 45px;
     border-radius: 50px;
 }
-.fade-in {
-    animation-name: fadeIn;
-}
-
-.fade-out {
-    animation-name: fadeOut;
-}
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(startYposition);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(endYposition);
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-        transform: translateY(startYposition);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(endYposition);
-    }
-}
 @media screen and (max-width: 768px) {
     .wrapper {
         height: auto;
         min-height: 100vh;
         padding-top: 100px;
     }
+}
+.qr--code {
+    cursor: pointer;
+    background-color: #fff;
+    position: fixed;
+    left: 30px;
+    bottom: 35px;
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.50);
+}
+.qr--code svg {
+    width: 40px;
+    height: 40px;
 }
 @media screen and (max-width: 767px) {
     .wrapper {

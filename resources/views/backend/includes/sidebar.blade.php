@@ -54,7 +54,7 @@
             <li class="@if(Route::is('image-upload') ) active @endif">
                 <a href="{{ url('/image-upload') }}">
                     <i class="nc-icon nc-cloud-upload-94"></i>
-                    <p>Upload Logo</p>
+                    <p>Logo or QR Code Image</p>
                 </a>
             </li>
 {{--            <li class="active-pro">--}}
