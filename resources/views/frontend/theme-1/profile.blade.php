@@ -253,7 +253,7 @@
 
                         <div class="row my-5">
                             <div class="qr-card__img-black text-center">
-                                <img src="{{ $qrUrl }}" alt="qr">
+                                <img src="{{ $qrUrl }}" alt="qr" >
                             </div>
                         </div>
 

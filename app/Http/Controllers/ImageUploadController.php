@@ -32,16 +32,22 @@ class ImageUploadController extends Controller
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'qr_code' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $imageName = $request->image->hashName();
         $qrName = $request->qr_code->hashName();
 
-        $path = Storage::disk('s3')->put('images', $request->image);
-        $path = Storage::disk('s3')->url($path);
+        if ($request->image) {
+            $path = Storage::disk('s3')->put('images', $request->image);
+            $path = Storage::disk('s3')->url($path);
+        }
 
-        $qrPath = Storage::disk('s3')->put('qr-codes', $request->qr_code);
-        $qrPath = Storage::disk('s3')->url($qrPath);
+        if ($request->qr_code) {
+            $qrPath = Storage::disk('s3')->put('qr-codes', $request->qr_code);
+            $qrPath = Storage::disk('s3')->url($qrPath);
+        }
+
 
 //        dd($request->image->hashName());
 
@@ -86,6 +92,7 @@ class ImageUploadController extends Controller
 
         return back()
             ->with('success','You have successfully upload image.')
-            ->with('image', $path);
+            ->with('image', $path)
+            ->with('qr_code', $qrPath);
     }
 }

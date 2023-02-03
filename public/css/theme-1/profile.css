@@ -84,6 +84,7 @@ a, a:hover {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    border: 1px solid;
 }
 .profile-card__cnt {
     margin-top: -35px;
@@ -139,6 +140,10 @@ a, a:hover {
 .profile-card-inf__item {
     padding: 10px 35px;
     min-width: 150px;
+}
+.qr-card__img-black img {
+    width: 400px;
+    height: 400px;
 }
 @media screen and (max-width: 768px) {
     .profile-card-inf__item {
@@ -556,6 +561,10 @@ li.has-content:hover::after {
     }
     .profile-card__cnt {
         padding: 0;
+    }
+    .qr-card__img-black img {
+        width: 100%;
+        height: 300px;
     }
 }
 
